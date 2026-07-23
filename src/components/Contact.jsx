@@ -66,8 +66,8 @@ export default function Contact() {
     try {
       // Replace YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY with actual EmailJS credentials
       await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           from_email: form.email,
@@ -75,7 +75,7 @@ export default function Contact() {
           message: form.message,
           to_name: 'Sreya',
         },
-        'YOUR_PUBLIC_KEY'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       setStatus('success')
       setForm({ name: '', email: '', subject: '', message: '' })
